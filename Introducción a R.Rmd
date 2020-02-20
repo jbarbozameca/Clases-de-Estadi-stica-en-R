@@ -5,14 +5,24 @@ date: "2/19/2020"
 output:
   ioslides_presentation: default
   powerpoint_presentation: default
+  slidy_presentation: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Tipos de variables
+## Instalar R
+https://www.r-project.org/
 
+![Rproject](https://imagizer.imageshack.com/v2/500x500q90/924/jbNjoO.png)
+
+## Instalar R Studio
+https://rstudio.com/products/rstudio/download/#download
+
+![R Studio](https://imagizer.imageshack.com/v2/500x500q90/923/4mWTOE.png)
+
+## Tipos de variables
 Variables cualitativas
 ```{r cuali, echo = TRUE}
 x<-"Joshuan"; x
