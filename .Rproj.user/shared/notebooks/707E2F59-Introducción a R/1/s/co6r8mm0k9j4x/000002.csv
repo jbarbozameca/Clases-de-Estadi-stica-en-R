@@ -1,0 +1,8 @@
+"0","nombre<-""Joshuan"""
+"0","apellidopat<-""Barboza"""
+"0","apellidomat<-""Meca"""
+"0","nombrecompleto<-paste(nombre,apellidopat,apellidomat,sep=""_""); nombrecompleto"
+"1","[1]"
+"1"," ""Joshuan_Barboza_Meca"""
+"1","
+"

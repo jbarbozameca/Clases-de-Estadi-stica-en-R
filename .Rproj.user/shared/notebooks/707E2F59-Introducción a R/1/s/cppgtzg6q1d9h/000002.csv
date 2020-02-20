@@ -1,0 +1,2 @@
+"0","matriz5<-data.frame(Peso=c(68,99),Talla=c(144,150),Edad=c(45,38))"
+"0","matriz6<-rbind(matriz4,matriz5); matriz6   "

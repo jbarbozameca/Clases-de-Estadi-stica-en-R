@@ -1,0 +1,189 @@
+---
+title: "Introducción a R"
+author: "Joshuan J. Barboza"
+date: "2/19/2020"
+output:
+  ioslides_presentation: default
+  powerpoint_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Tipos de variables
+
+Variables cualitativas
+```{r cuali, echo = TRUE}
+x<-"Joshuan"; x
+```
+
+```{r sexo, echo = TRUE}
+sexo<-c("Masculino","Femenino"); sexo
+```
+Las variables cualitativas pueden ser categóricas o nominales y ordinales
+
+## Ejemplo de variable ordinal
+```{r ordinal, echo = TRUE}
+enfermedad<-c("Leve","Moderado","Severo");enfermedad 
+```
+
+## Variables cuantitativas
+```{r cuanti, echo = TRUE}
+a<-1; a
+b<-2; b
+a+b
+```
+
+```{r PA, echo = TRUE}
+presion_arterial_media<-c(120,110,100); presion_arterial_media
+```
+
+## Planteando las primeras variables
+```{r variables, echo = TRUE}
+var1<-10
+var2<-90
+var3<-var1 + var2
+```
+¿Qué tipo de variable es?
+
+## Uniendo variables cualitativas
+```{r var, echo = TRUE}
+nombre<-"Joshuan"
+apellidopat<-"Barboza"
+apellidomat<-"Meca"
+nombrecompleto<-paste(nombre,apellidopat,apellidomat,sep="_"); nombrecompleto
+```
+
+## Creando vectores
+```{r vectores, echo = TRUE}
+var5<-c(105,170,28); var5
+var6<-c(108,189,32); var6
+var7<-c(110,160,29); var7
+var8<-c("Peso","Talla","Edad"); var8
+```
+
+## Secuencia de datos para formar un vector
+Configurar los números consecutivos desde el 10 al 25
+```{r consec, echo = TRUE}
+var9<-10:25; var9
+```
+
+## Configurar los números consecutivos
+```{r consec2, echo = TRUE}
+var10<-1.2:5.2; var10
+```
+
+## La función "seq" permitirá configurar los números consecutivos entre 3 y 6, de 0.1 en 0.1 gracias a la función "by"
+```{r seq, echo = TRUE}
+var11<-seq(3,6,by=0.1)
+```
+
+## Conocer vectores a partir de su posición
+```{r posicion, echo = TRUE}
+var12<-seq(1,20,by=2)
+```
+Número impar que ocupa la quinta posición
+```{r impar, echo = TRUE}
+   var12[5]
+```
+
+## Todos los números impares desde la posición 5 hasta la posición 8 (posiciones consecutivas)
+```{r impares consec, echo = TRUE}
+var12[5:8]
+```
+Datos con la primera y tercera posiciones (posiciones no consecutivas)
+```{r pos, echo = TRUE}
+var12[c(1,3)]
+```
+## Datos situados en la primera posición y desde la tercera hasta la quinta (posiciones mixtas). 
+```{r mixt, echo = TRUE}
+var12[c(1,3:5)]
+```
+
+## Sumar datos a un vector o conjunto
+```{r, echo = TRUE}
+var13<-seq(1,10); var13
+var14<-var13+6; var14
+```
+## Sumar todos los elementos de un vector##
+```{r, echo = TRUE}
+var15<-sum(var14); var15
+```
+## Creando matrices en R
+install.packages("tidyverse")
+### Crear una matriz
+```{r, echo = TRUE}
+var16<-seq(1,50) 
+matriz1<-matrix(var16,5,10); matriz1
+```
+## Activar secuencia por filas
+```{r, echo = TRUE}
+matriz1.1<-matrix(var16,5,10,byrow = TRUE);matriz1.1
+```
+
+## Creación de matriz mixta (cualitativas y cuantitativas) a partir de un vector
+```{r, echo = TRUE}
+var17<-c(140,28,"Si","No",135,32,"No","No",150,30,"Si","Si"); var17
+```
+
+```{r, echo = TRUE}
+matriz2<-matrix(var17,3,4,byrow = TRUE); matriz2
+```
+
+## Finalmente, cambiar el nombre de las filas y columnas
+```{r, echo = TRUE}
+variables1<-c("Presión","Edad","Ejercicio","Obesidad")
+pacientes1<-c("Joshuan","José","Juan")
+colnames(matriz2)<-variables1
+rownames(matriz2)<-pacientes1; matriz2
+```
+
+## Otra forma para crear matrices, a partir de la unión por filas de los datos de cada sujeto
+```{r, echo = TRUE}
+Joshuan<-c(105,170,28)
+José<-c(150,182,32)
+Juan<-c(100,170,25)
+Javier<-c(68,175,35)
+Jorge<-c(99,168,29)
+matriz3<-rbind(Joshuan, José, Juan, Javier, Jorge); matriz3
+```
+## Cambiar nombre a las columnas
+```{r, echo = TRUE}
+variables<-c("Peso","Talla","Edad")
+colnames(matriz3)<-variables; matriz3
+```
+
+## También puedo crear matrices uniendo las columnas
+```{r, echo = TRUE}
+Peso<-c(105,170,28)
+Talla<-c(150,182,32)
+Edad<-c(29,32,25)
+matriz4<-cbind(Peso,Talla,Edad); matriz4
+```
+## Agregando nombres de filas
+```{r, echo = TRUE}
+rownames(matriz4)<-c("Joshuan","José","Juan"); matriz4
+```
+
+## Agregar nuevos datos a la matriz
+```{r, echo = TRUE}
+matriz5<-data.frame(Peso=c(68,99),Talla=c(144,150),Edad=c(45,38))
+matriz6<-rbind(matriz4,matriz5); matriz6   
+```
+
+```{r, echo = TRUE}
+pacientes_nuevos<-c("Joshuan","José","Juan","Mathias","Daniel") 
+rownames(matriz6)<-pacientes_nuevos; matriz6
+```
+
+## Agregar columnas
+```{r, echo = TRUE}
+RiesgoIAM<-c("Si","Si","No","Si","No")
+matriz8<-cbind(matriz6,RiesgoIAM); matriz8
+```
+## Nueva columna
+```{r, echo = TRUE}
+Antecedente_Familiar<-c("No","No","Si","Si","Si")
+matriz9<-cbind(matriz8,Antecedente_Familiar); matriz9 
+```

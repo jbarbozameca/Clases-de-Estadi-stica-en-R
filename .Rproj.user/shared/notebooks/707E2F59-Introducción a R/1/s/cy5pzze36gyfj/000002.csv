@@ -1,0 +1,2 @@
+"0","pacientes_nuevos<-c(""Joshuan"",""José"",""Juan"",""Mathias"",""Daniel"") "
+"0","rownames(matriz6)<-pacientes_nuevos; matriz6"
